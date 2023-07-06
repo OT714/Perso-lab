@@ -1,0 +1,22 @@
+# Use the official Jenkins LTS image as the base
+FROM jenkins/jenkins:lts
+
+# Switch to the root user for installation
+USER root
+
+# Install Node.js
+RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
+    apt-get install -y nodejs
+
+# Switch back to the Jenkins user
+USER jenkins
+
+# Set environment variables for Jenkins
+ENV JENKINS_OPTS="--httpPort=8080 --httpsPort=-1"
+
+# Install recommended plugins (you can customize this as per your requirements)
+RUN /usr/local/bin/install-plugins.sh git maven nodejs
+
+# Custom CMD instruction
+CMD ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
+
