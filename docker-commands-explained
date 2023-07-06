@@ -1,0 +1,39 @@
+Create a Jenkins container with Docker:
+===================================================
+Commands:
+docker run --name jenkins-docker --rm --detach --privileged --network jenkins --network-alias docker --env DOCKER_TLS_CERTDIR=/certs --volume jenkins-docker-certs:/certs/client --volume jenkins-data:/var/jenkins_home --volume /root docker:dind
+
+# Run the jenkinsci/blueocean image as a container in Docker using the following docker container run command. Specify your location to /root folder:
+
+docker  run --name jenkins-tutorial --rm --detach --network jenkins --env DOCKER_HOST=tcp://docker:2376 --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 --volume jenkins-data:/var/jenkins_home --volume jenkins-docker-certs:/certs/client:ro --volume /root --publish 8080:8080 --publish 50000:50000 jenkinsci/blueocean
+===========================================================================================
+Let's break down the docker run command with the provided options and parameters:
+===========================================================================================
+
+--name jenkins-tutorial: Sets the name of the Docker container as "jenkins-tutorial".
+
+--rm: Automatically removes the container when it is stopped or exited.
+
+--detach: Runs the container in the background (detached mode).
+
+--network jenkins: Connects the container to the Docker network named "jenkins".
+
+--env DOCKER_HOST=tcp://docker:2376: Sets the environment variable DOCKER_HOST with the value tcp://docker:2376. This specifies the Docker daemon's host and port that the Jenkins container should connect to.
+
+--env DOCKER_CERT_PATH=/certs/client: Sets the environment variable DOCKER_CERT_PATH with the value /certs/client. This specifies the path to the Docker client certificates.
+
+--env DOCKER_TLS_VERIFY=1: Sets the environment variable DOCKER_TLS_VERIFY with the value 1, indicating that TLS verification should be enabled for Docker communication.
+
+--volume jenkins-data:/var/jenkins_home: Mounts the Docker volume named "jenkins-data" to the path /var/jenkins_home within the Jenkins container. This allows persistent storage for Jenkins data.
+
+--volume jenkins-docker-certs:/certs/client:ro: Mounts the Docker volume named "jenkins-docker-certs" to the path /certs/client within the Jenkins container in read-only mode. This volume typically contains Docker client certificates required for secure communication.
+
+--volume /root: Mounts the host directory /root into the container. This is used to access files or directories from the host system within the container.
+
+--publish 8080:8080: Publishes port 8080 of the container to port 8080 on the host system. This allows accessing the Jenkins web interface from the host's port 8080.
+
+--publish 50000:50000: Publishes port 50000 of the container to port 50000 on the host system. This allows agents to connect to the Jenkins master on port 50000.
+
+jenkinsci/blueocean: Specifies the Docker image to use for the container, in this case, the jenkinsci/blueocean image.
+
+Overall, this docker run command sets up and runs a Jenkins container with the specified configurations. It connects the container to a Docker network, sets environment variables for Docker communication, mounts volumes for persistent data storage and client certificates, and publishes ports for accessing the Jenkins web interface and agent communication.
