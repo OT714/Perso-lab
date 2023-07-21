@@ -1,0 +1,18 @@
+Dear Team,
+
+I hope this message finds you well. I wanted to inform you about a planned maintenance activity that will take place to optimize costs and improve resource utilization in our environment.
+
+As part of our cost-saving initiatives, we will be stopping all virtual machines (VMs) daily at 6:00 PM Eastern Standard Time (EST) from Monday to Saturday. The VMs will be started back up on Sundays at 11:00 PM EST. This approach will significantly reduce unnecessary usage and help us better manage our cloud resources.
+
+Please note that this scheduled stoppage will only affect VMs used for non-critical tasks and development environments. Essential services and production VMs will be exempt from this action to ensure minimal disruption to ongoing operations.
+
+We kindly request your cooperation in ensuring that any workloads running on the affected VMs are saved and gracefully shutdown before the scheduled stoppage time. This will help prevent any potential data loss or impact on ongoing tasks.
+
+If you have any concerns or questions about this planned maintenance, please do not hesitate to reach out to the DevOps team or myself.
+
+Thank you for your understanding and support as we work together to optimize costs while maintaining a reliable and efficient infrastructure.
+
+Best regards,
+[Your Name]
+[Your Title/Role]
+[Contact Information]
