@@ -1,0 +1,35 @@
+Integrating Slack with Jenkins allows you to receive real-time notifications and updates about your Jenkins builds and jobs directly 
+in your Slack workspace. Here are the step-by-step instructions to integrate Slack with Jenkins:
+
+Step 1: Install the Slack Plugin in Jenkins
+
+Open Jenkins and navigate to "Manage Jenkins" > "Manage Plugins" > "Available" tab.
+Search for "Slack Notification Plugin" and select the checkbox next to it.
+Click on the "Install without restart" button to install the plugin.
+Step 2: Set Up Slack Incoming Webhook
+
+In your Slack workspace, go to "Settings & administration" > "Manage apps" > "Browse apps."
+Search for "Incoming Webhooks" and click on "Add to Slack."
+Follow the prompts to configure the Incoming Webhook for your desired channel. Take note of the generated Webhook URL.
+Step 3: Configure Jenkins Global Settings
+
+Go back to Jenkins and navigate to "Manage Jenkins" > "Configure System."
+Scroll down to the "Slack" section.
+Click on "Add Slack Team Configuration" to set up your Slack team.
+Enter a name for your Slack team configuration.
+Paste the Slack Incoming Webhook URL obtained in Step 2 into the "Integration Token" field.
+Optionally, you can customize the notification settings (e.g., notification events, message format, etc.).
+Click on "Save" to save the configuration.
+Step 4: Configure Jenkins Job to Send Slack Notifications
+
+Open the Jenkins job that you want to receive notifications for or create a new job.
+In the job configuration page, scroll down to the "Post-build Actions" section.
+Click on "Add post-build action" and select "Slack Notifications" from the dropdown.
+In the "Team" field, select the Slack team configuration you set up in Step 3.
+Customize the notification settings for this specific job (e.g., channel, message, notification on success/failure, etc.).
+Click on "Save" to save the job configuration.
+Step 5: Test the Integration
+
+Trigger a build in the Jenkins job you configured in Step 4.
+After the build completes, check the Slack channel you specified in the Slack notification settings.
+You should receive a notification in the Slack channel about the build status.
